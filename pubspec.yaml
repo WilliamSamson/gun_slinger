@@ -1,0 +1,80 @@
+name: gun_slinger
+description: A new Flutter project.
+
+publish_to: 'none' 
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.2 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  introduction_screen: ^3.0.2
+  font_awesome_flutter: ^10.2.1
+  google_fonts: ^3.0.1
+  flutter_native_splash: ^2.2.9
+  flutter_launcher_icons: ^0.10.0
+  responsive_builder: ^0.4.3
+  animated_background: ^2.0.0
+  responsive_framework: ^0.2.0
+  provider: ^6.0.3
+  shared_preferences: ^2.0.15
+  showcaseview: ^2.0.0+1
+  simple_animations: ^5.0.0+2
+  flutter_inset_box_shadow: ^1.0.1
+ # audioplayers: ^1.1.1
+  swipeable_button_view:
+  flame: 1.0.0-releasecandidate.15
+  tiledjsonreader: ^1.2.6
+ 
+
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/a.jpeg"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/a.jpeg"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "path/to/a.jpeg"
+    icon_size: 48
+
+flutter_native_splash:
+  background_image: "assets/combat.png"
+  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+ 
+  flutter_lints: ^2.0.0
+
+flutter:
+
+  
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/images/
+    - assets/images/cacti/
+    - assets/images/dino/
+    - assets/images/ptera/
+    - assets/Game_View/Bond001/
+    - assets/Game_View/fred/
+    - assets/Game_View/Homer/
+    - assets/Game_View/Optimus/
+    - assets/Game_View/Batman/
+    - assets/Maps/
+    - assets/Players/
+    
+    
+ 
