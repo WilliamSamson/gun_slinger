@@ -55,7 +55,7 @@ class VideoState extends State<Splash4> with SingleTickerProviderStateMixin {
                 'assets/assassin.jpg',
                 fit: BoxFit.contain,
                 width: animation.value * 300,
-                height: animation.value * 375,
+                height: animation.value * 350,
               ),
             ],
           ),

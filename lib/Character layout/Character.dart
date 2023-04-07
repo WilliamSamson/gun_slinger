@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
-import 'package:gun_slinger/menu.dart';
+import 'package:gun_slinger/Game%20Level/Select.dart';
 
-import '../Game Level/Select.dart';
-import 'character_select.dart';
+import 'package:gun_slinger/menu.dart';
 
 class Characters1 extends StatefulWidget {
   const Characters1({Key? key}) : super(key: key);
@@ -12,129 +11,143 @@ class Characters1 extends StatefulWidget {
   State<Characters1> createState() => _CharactersState();
 }
 
-late Gender selectedGender;
-
 class _CharactersState extends State<Characters1> {
-  bool _boolString = false;
-
   var secondaryColor = const Color.fromARGB(255, 34, 50, 77);
   var primaryColor = const Color.fromARGB(255, 14, 21, 24);
-  var selectedGender = Gender.Male;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.all(1.0),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 30,
-            ),
-            Row(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+      backgroundColor: Colors.black,
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        child: Padding(
+          padding: const EdgeInsets.all(1.0),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 30,
+              ),
+              Row(
+                // mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      IconButton(
+                        icon: const Icon(
+                          Icons.arrow_back_ios_new_outlined,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const Menu(),
+                            ),
+                          );
+                          Color _color = Colors.black;
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text(
+                        ' Select your Player',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 111, 106, 106),
+                          fontSize: 20,
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
                   children: [
-                    IconButton(
-                      icon: const Icon(Icons.arrow_back_ios_new_outlined),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Menu(),
+                    SizedBox(
+                      // width:,
+                      height: 200,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            width: 6,
                           ),
-                        );
-                        _boolString = true;
-                        Color _color = Colors.black;
-                      },
+                          CustomCard(
+                            size,
+                            context,
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          CustomCard2(
+                            size,
+                            context,
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          CustomCard3(
+                            size,
+                            context,
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          CustomCard4(
+                            size,
+                            context,
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          CustomCard5(
+                            size,
+                            context,
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      ' Select your Player',
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 123, 116, 116),
-                        fontSize: 20,
-                      ),
-                    )
-                  ],
-                ),
-
-                // const SizedBox(
-                //   width: 30,
-                // ),
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  SizedBox(
-                    // width:,
-                    height: 200,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const SizedBox(
-                          width: 6,
-                        ),
-                        CustomCard(size, context),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        CustomCard2(size, context),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        CustomCard3(size, context),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        CustomCard4(size, context),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        CustomCard5(size, context),
-                      ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Text(
+                    'Swipe to choose a different character -->',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 20,
                     ),
                   ),
                 ],
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(
-                  'Swipe to choose a different character -->',
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 20,
-                  ),
-                )
-              ],
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
-GestureDetector CustomCard(Size size, context) {
+GestureDetector CustomCard(
+  Size size,
+  context,
+) {
   return GestureDetector(
     onTap: () {
       Navigator.push(
@@ -143,14 +156,16 @@ GestureDetector CustomCard(Size size, context) {
           builder: (context) => const Select_Location(),
         ),
       );
-
-      selectedGender = Gender.Male;
     },
     child: Container(
       width: 300,
       decoration: BoxDecoration(
         color: const Color.fromARGB(245, 10, 15, 40),
         borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: Colors.white,
+          width: 5,
+        ),
       ),
       child: Stack(
         children: [
@@ -175,7 +190,10 @@ GestureDetector CustomCard(Size size, context) {
   );
 }
 
-GestureDetector CustomCard2(Size size, context) {
+GestureDetector CustomCard2(
+  Size size,
+  context,
+) {
   return GestureDetector(
     onTap: () {
       Navigator.push(
@@ -184,14 +202,13 @@ GestureDetector CustomCard2(Size size, context) {
           builder: (context) => const Select_Location(),
         ),
       );
-      selectedGender = Gender.Female;
     },
     child: Container(
       width: 300,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 84, 20, 105),
+        color: const Color.fromARGB(255, 84, 20, 105),
         border: Border.all(
-          color: Colors.black,
+          color: Colors.white,
           width: 5,
         ),
         borderRadius: BorderRadius.circular(8),
@@ -220,7 +237,10 @@ GestureDetector CustomCard2(Size size, context) {
   );
 }
 
-GestureDetector CustomCard3(Size size, context) {
+GestureDetector CustomCard3(
+  Size size,
+  context,
+) {
   return GestureDetector(
     onTap: () {
       Navigator.push(
@@ -229,14 +249,12 @@ GestureDetector CustomCard3(Size size, context) {
           builder: (context) => const Select_Location(),
         ),
       );
-
-      selectedGender = Gender.Female1;
     },
     child: Container(
       width: 300,
       decoration: BoxDecoration(
         border: Border.all(
-          color: Colors.black,
+          color: const Color.fromARGB(255, 42, 120, 44),
           width: 5,
         ),
         color: Colors.white,
@@ -275,15 +293,13 @@ GestureDetector CustomCard4(Size size, context) {
           builder: (context) => const Select_Location(),
         ),
       );
-
-      selectedGender = Gender.Female2;
     },
     child: Container(
       width: 300,
       decoration: BoxDecoration(
-        color: Color.fromARGB(248, 163, 32, 32),
+        color: const Color.fromARGB(248, 163, 32, 32),
         border: Border.all(
-          color: Colors.black,
+          color: Colors.white,
           width: 5,
         ),
         borderRadius: BorderRadius.circular(8),
@@ -321,15 +337,13 @@ GestureDetector CustomCard5(Size size, context) {
           builder: (context) => const Select_Location(),
         ),
       );
-
-      selectedGender = Gender.Female3;
     },
     child: Container(
       width: 300,
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(
-          color: Colors.black,
+          color: Colors.yellow,
           width: 5,
         ),
         borderRadius: BorderRadius.circular(8),

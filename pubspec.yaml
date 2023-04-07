@@ -25,10 +25,9 @@ dependencies:
   showcaseview: ^2.0.0+1
   simple_animations: ^5.0.0+2
   flutter_inset_box_shadow: ^1.0.1
- # audioplayers: ^1.1.1
   swipeable_button_view:
-  flame: 1.0.0-releasecandidate.15
-  tiledjsonreader: ^1.2.6
+  flame: ^1.6.0
+ 
  
 
 

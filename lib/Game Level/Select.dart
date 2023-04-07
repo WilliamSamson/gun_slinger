@@ -1,46 +1,26 @@
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:gun_slinger/Character%20layout/Character.dart';
 
-import '../Dino World/main.dart';
+import 'Main.dart';
 
 class Select_Location extends StatefulWidget {
-  const Select_Location({Key? key}) : super(key: key);
+  const Select_Location({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<Select_Location> createState() => _Select_LocationState();
 }
 
 class _Select_LocationState extends State<Select_Location> {
-  bool isLukane = false;
-  bool isDeathStorm = false;
-  bool isSaramuko = false;
-  bool isErnest = false;
-  bool isPressed = false;
-
   @override
   Widget build(BuildContext context) {
-    const backgroundColor = Color.fromARGB(255, 92, 125, 138);
-    Offset distanceMale =
-        isLukane ? const Offset(10, 10) : const Offset(15, 15);
-    double blurMale = isLukane ? 5 : 30;
-
-    Offset distanceFemale =
-        isDeathStorm ? const Offset(10, 10) : const Offset(15, 15);
-    double blurFemale = isDeathStorm ? 5 : 30;
-
-    Offset distanceFemale1 =
-        isSaramuko ? const Offset(10, 10) : const Offset(15, 15);
-    double blurFemale1 = isSaramuko ? 5 : 30;
-
-    Offset distanceFemale2 =
-        isErnest ? const Offset(10, 10) : const Offset(15, 15);
-    double blurFemale2 = isErnest ? 5 : 30;
-
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       body: Padding(
         padding: const EdgeInsets.all(1.0),
         child: Column(
@@ -55,6 +35,7 @@ class _Select_LocationState extends State<Select_Location> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     IconButton(
+                        color: Colors.white,
                         icon: const Icon(Icons.arrow_back_ios_new_outlined),
                         onPressed: () {
                           Navigator.push(
@@ -63,8 +44,6 @@ class _Select_LocationState extends State<Select_Location> {
                               builder: (context) => const Characters1(),
                             ),
                           );
-
-                          Color _color = Colors.black;
                         }),
                   ],
                 ),
@@ -96,7 +75,7 @@ class _Select_LocationState extends State<Select_Location> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const SizedBox(
-                          width: 6,
+                          width: 10,
                         ),
                         CustomCard(size, context),
                         const SizedBox(
@@ -110,7 +89,7 @@ class _Select_LocationState extends State<Select_Location> {
                         const SizedBox(
                           width: 8,
                         ),
-                        CustomCard4(size, context),
+                        // CustomCard4(size, context),
                       ],
                     ),
                   ),
@@ -141,38 +120,40 @@ class _Select_LocationState extends State<Select_Location> {
 
 GestureDetector CustomCard(Size size, context) {
   return GestureDetector(
-    // onTap: () => Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => const App(),
-    //   ),
-    // ),
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => GameWidget(
+            game: MyGame(),
+          ),
+        ),
+      );
+    },
     child: Container(
       width: 300,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 131, 166, 167),
+        color: const Color.fromARGB(255, 218, 225, 225),
         borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: Colors.grey,
+          width: 5,
+        ),
       ),
       child: Stack(
         //alignment: AlignmentDirectional.center,
         children: [
-          Transform(
-            alignment: Alignment.center,
-            transform: Matrix4.rotationZ(
-              -3.142 / 2,
-            ),
-            child: Image.asset(
-              'assets/Maps/location1.png',
-              fit: BoxFit.contain,
-              width: 400,
-            ),
+          Image.asset(
+            'assets/Maps/location1.png',
+            fit: BoxFit.contain,
+            width: 400,
           ),
           const Padding(
             padding: EdgeInsets.only(left: 15, top: 170),
             child: Text(
-              'Cactus-Texas',
+              'Texas-Cactus',
               style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: 15,
                   fontWeight: FontWeight.bold),
             ),
@@ -185,36 +166,36 @@ GestureDetector CustomCard(Size size, context) {
 
 GestureDetector CustomCard2(Size size, context) {
   return GestureDetector(
-    onTap: () => Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => MyApp1(),
-      ),
-    ),
+    onTap: () {
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) => const MyApp1(),
+      //   ),
+      // );
+    },
     child: Container(
       width: 300,
       decoration: BoxDecoration(
         color: Colors.black,
         borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: Colors.white,
+          width: 5,
+        ),
       ),
       child: Stack(
         //alignment: AlignmentDirectional.center,
         children: [
-          Transform(
-            alignment: Alignment.center,
-            transform: Matrix4.rotationZ(
-              -3.142 / 2,
-            ),
-            child: Image.asset(
-              'assets/Maps/dark-valley.jpg',
-              fit: BoxFit.contain,
-              width: 400,
-            ),
+          Image.asset(
+            'assets/Maps/dark-valley.jpg',
+            fit: BoxFit.contain,
+            width: 400,
           ),
           const Padding(
             padding: EdgeInsets.only(left: 15, top: 170),
             child: Text(
-              'Dark-Valley',
+              'Dark-Valley -coming soon-',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 15,
@@ -229,38 +210,49 @@ GestureDetector CustomCard2(Size size, context) {
 
 GestureDetector CustomCard3(Size size, context) {
   return GestureDetector(
-    onTap: () => Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => MyApp1(),
-      ),
-    ),
+    onTap: () {
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) => const MyApp1(),
+      //   ),
+      // );
+    },
     child: Container(
       width: 300,
       decoration: BoxDecoration(
-        color: Colors.black,
+        color: Color.fromARGB(255, 96, 163, 169),
         borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: Colors.white,
+          width: 5,
+        ),
       ),
       child: Stack(
         //alignment: AlignmentDirectional.center,
         children: [
-          Transform(
-            alignment: Alignment.center,
-            transform: Matrix4.rotationZ(
-              -3.142 / 2,
-            ),
-            child: Image.asset(
-              'assets/Maps/dark-valley.jpg',
-              fit: BoxFit.contain,
-              width: 400,
-            ),
+          Image.asset(
+            'assets/Maps/york.jpg',
+            fit: BoxFit.contain,
+            width: 300,
           ),
+          // Transform(
+          //   alignment: Alignment.center,
+          //   transform: Matrix4.rotationZ(
+          //     -3.142 / 2,
+          //   ),
+          //   child: Image.asset(
+          //     'assets/Maps/dark-valley.jpg',
+          //     fit: BoxFit.contain,
+          //     width: 400,
+          //   ),
+          // ),
           const Padding(
             padding: EdgeInsets.only(left: 15, top: 170),
             child: Text(
-              'Dark-Valley',
+              'New York City -coming soon-',
               style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: 15,
                   fontWeight: FontWeight.bold),
             ),
@@ -273,12 +265,14 @@ GestureDetector CustomCard3(Size size, context) {
 
 GestureDetector CustomCard4(Size size, context) {
   return GestureDetector(
-    onTap: () => Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => MyApp1(),
-      ),
-    ),
+    onTap: () {
+      //   Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) => const MyApp1(),
+      //     ),
+      //   );
+    },
     child: Container(
       width: 300,
       decoration: BoxDecoration(
@@ -288,17 +282,22 @@ GestureDetector CustomCard4(Size size, context) {
       child: Stack(
         //alignment: AlignmentDirectional.center,
         children: [
-          Transform(
-            alignment: Alignment.center,
-            transform: Matrix4.rotationZ(
-              -3.142 / 2,
-            ),
-            child: Image.asset(
-              'assets/Maps/dark-valley.jpg',
-              fit: BoxFit.contain,
-              width: 400,
-            ),
+          Image.asset(
+            'assets/Maps/dark-valley.jpg',
+            fit: BoxFit.contain,
+            width: 400,
           ),
+          // Transform(
+          //   alignment: Alignment.center,
+          //   transform: Matrix4.rotationZ(
+          //     -3.142 / 2,
+          //   ),
+          //   child: Image.asset(
+          //     'assets/Maps/dark-valley.jpg',
+          //     fit: BoxFit.contain,
+          //     width: 400,
+          //   ),
+          // ),
           const Padding(
             padding: EdgeInsets.only(left: 15, top: 170),
             child: Text(

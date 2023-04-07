@@ -130,166 +130,178 @@ class _MenuPageState extends State<MenuPage> with TickerProviderStateMixin {
                       ),
                     ),
                     child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.bottomRight,
-                            colors: [
-                              Colors.black,
-                              Colors.black.withOpacity(.3)
-                            ],
-                          ),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.bottomRight,
+                          colors: [Colors.black, Colors.black.withOpacity(.3)],
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Container(
-                                  width: 300,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const SizedBox(
-                                        height: 45,
-                                      ),
-                                      Visibility(
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                width: 300,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const SizedBox(
+                                      height: 45,
+                                    ),
+                                    Visibility(
                                         visible: _boolString,
-                                        child: const Text(
-                                          'Combat of Legends',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 32,
-                                          ),
-                                        ),
+                                        child: Column(
+                                          children: const [
+                                            Text(
+                                              'Combat of Legends ',
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 30,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 8,
+                                            ),
+                                            Text(
+                                              '-The Race to Victory-',
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18,
+                                              ),
+                                            ),
+                                          ],
+                                        )),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    SwipeableButtonView(
+                                      buttonText: 'Battle',
+                                      buttontextstyle: const TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold,
                                       ),
-                                      const SizedBox(
-                                        height: 25,
+                                      buttonWidget: const Icon(
+                                        FontAwesomeIcons.fire,
+                                        color: Color.fromARGB(255, 177, 30, 19),
                                       ),
-                                      SwipeableButtonView(
-                                        buttonText: 'Battle',
-                                        buttontextstyle: const TextStyle(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                        buttonWidget: const Icon(
-                                          FontAwesomeIcons.fire,
-                                          color: Colors.black,
-                                        ),
-                                        activeColor: _color,
-                                        isFinished: isFinished,
-                                        onWaitingProcess: () {
-                                          Future.delayed(
-                                              const Duration(seconds: 2), () {
-                                            setState(() {
-                                              isFinished = true;
-                                              _boolString = false;
-                                              _color = Colors.black;
-                                            });
+                                      activeColor: _color,
+                                      isFinished: isFinished,
+                                      onWaitingProcess: () {
+                                        Future.delayed(
+                                            const Duration(seconds: 2), () {
+                                          setState(() {
+                                            isFinished = true;
+                                            _boolString = false;
+                                            _color = Colors.black;
                                           });
-                                        },
-                                        onFinish: () async {
-                                          await Navigator.push(
+                                        });
+                                      },
+                                      onFinish: () async {
+                                        await Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const Characters1(),
+                                          ),
+                                        );
+                                        _color = Colors.black;
+                                        _boolString = false;
+                                        isFinished = false;
+                                        //TODO: For reverse ripple effect animation
+                                        setState(() {});
+                                      },
+                                    ),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    Visibility(
+                                      visible: _boolString,
+                                      child: TextButton(
+                                        style: const ButtonStyle(
+                                            //  backgroundColor: Color.fromARGB(a, r, g, b)
+                                            ),
+                                        onPressed: () {
+                                          Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) =>
-                                                  const Characters1(),
+                                                  const CharactersInfo(),
                                             ),
                                           );
-                                          _color = Colors.black;
-                                          _boolString = false;
-                                          isFinished = false;
-                                          //TODO: For reverse ripple effect animation
-                                          setState(() {});
                                         },
-                                      ),
-                                      const SizedBox(
-                                        height: 20,
-                                      ),
-                                      Visibility(
-                                        visible: _boolString,
-                                        child: TextButton(
-                                          style: const ButtonStyle(
-                                              // backgroundColor: Colors.grey ,
-                                              ),
-                                          onPressed: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const CharactersInfo(),
-                                              ),
-                                            );
-                                          },
-                                          child: const Text(
-                                            'Fighters',
-                                            style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          //  ),
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        width: 20,
-                                      ),
-                                      Visibility(
-                                        visible: _boolString,
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            Navigator.pop(context);
-                                          },
-                                          child: Container(
-                                              decoration: BoxDecoration(
-                                                // color: Color.fromARGB(255, 146, 5, 15),
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
-                                              child: IconButton(
-                                                color: Colors.white,
-                                                onPressed: () {
-                                                  showDialog(
-                                                    context: context,
-                                                    builder: (BuildContext
-                                                            context) =>
-                                                        _buildPopupDialog(
-                                                            context),
-                                                  );
-                                                },
-                                                icon: const Icon(
-                                                  Icons.info_outline,
-                                                  size: 40,
-                                                  //  color: Color.fromARGB(255, 27, 145, 88),
-                                                ),
-                                              )),
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        height: 30,
-                                      ),
-                                      Visibility(
-                                        visible: _boolString,
                                         child: const Text(
-                                          '-Brought to you by WS Corp-  ',
-                                          textAlign: TextAlign.center,
-                                          maxLines: 2,
+                                          'Fighters',
                                           style: TextStyle(
-                                            color: Colors.white,
+                                            color: Colors.black,
+                                            fontSize: 20,
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 15,
                                           ),
                                         ),
+                                        //  ),
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                    const SizedBox(
+                                      width: 20,
+                                    ),
+                                    Visibility(
+                                      visible: _boolString,
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Container(
+                                            decoration: BoxDecoration(
+                                              // color: Color.fromARGB(255, 146, 5, 15),
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            child: IconButton(
+                                              color: Colors.white,
+                                              onPressed: () {
+                                                showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (BuildContext context) =>
+                                                          _buildPopupDialog(
+                                                              context),
+                                                );
+                                              },
+                                              icon: const Icon(
+                                                Icons.info_outline,
+                                                size: 40,
+                                                //  color: Color.fromARGB(255, 27, 145, 88),
+                                              ),
+                                            )),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 30,
+                                    ),
+                                    Visibility(
+                                      visible: _boolString,
+                                      child: const Text(
+                                        '-Brought to you by WS Corp-  ',
+                                        textAlign: TextAlign.center,
+                                        maxLines: 2,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                          ],
-                        )),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -309,7 +321,7 @@ Widget _buildPopupDialog(BuildContext context) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const <Widget>[
         Text(
-          "-Welcome to Combat of Legends- \nTo move the your character, simply swipe in direction left, right, up and down. Collect coins, while also avoiding other warriors and set a highscore to become to Ultimate Combat Legend. ",
+          "-Welcome to Combat of Legends- \nYour goal is to make it across dangerous lands in time for the ultimate combat of legends, to prove yourself as the ultimate combat champion in a vast multiverse of legends. The task ahead wont be easy, so get ready to tap your way to victory.",
           style: TextStyle(
               color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
         ),

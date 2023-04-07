@@ -12,7 +12,7 @@ class CharactersInfo extends StatefulWidget {
   State<CharactersInfo> createState() => _CharactersInfoState();
 }
 
-late Gender selectedGender;
+late Character selectedGender;
 
 class _CharactersInfoState extends State<CharactersInfo> {
   bool isLukane = false;
@@ -28,7 +28,7 @@ class _CharactersInfoState extends State<CharactersInfo> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 141, 37, 27),
       body: Padding(
         padding: const EdgeInsets.all(1.0),
         child: Column(
@@ -43,7 +43,10 @@ class _CharactersInfoState extends State<CharactersInfo> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     IconButton(
-                        icon: const Icon(Icons.arrow_back_ios_new_outlined),
+                        icon: const Icon(
+                          Icons.arrow_back_ios_new_outlined,
+                          color: Colors.white,
+                        ),
                         onPressed: () {
                           Navigator.push(
                             context,
@@ -144,6 +147,10 @@ GestureDetector CustomCard(Size size, context) {
       decoration: BoxDecoration(
         color: const Color.fromARGB(245, 10, 15, 40),
         borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: Colors.white,
+          width: 5,
+        ),
       ),
       child: Stack(
         //alignment: AlignmentDirectional.center,
@@ -182,7 +189,7 @@ GestureDetector CustomCard2(Size size, context) {
       decoration: BoxDecoration(
         color: Color.fromARGB(255, 98, 26, 122),
         border: Border.all(
-          color: Colors.black,
+          color: Colors.white,
           width: 5,
         ),
         borderRadius: BorderRadius.circular(8),
@@ -223,7 +230,7 @@ GestureDetector CustomCard3(Size size, context) {
       width: 300,
       decoration: BoxDecoration(
         border: Border.all(
-          color: Colors.black,
+          color: Color.fromARGB(255, 42, 120, 44),
           width: 5,
         ),
         color: Colors.white,
@@ -266,7 +273,7 @@ GestureDetector CustomCard4(Size size, context) {
       decoration: BoxDecoration(
         color: Color.fromARGB(248, 163, 32, 32),
         border: Border.all(
-          color: Colors.black,
+          color: Colors.white,
           width: 5,
         ),
         borderRadius: BorderRadius.circular(8),
@@ -308,7 +315,7 @@ GestureDetector CustomCard5(Size size, context) {
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(
-          color: Colors.black,
+          color: Colors.yellow,
           width: 5,
         ),
         borderRadius: BorderRadius.circular(8),
@@ -345,7 +352,7 @@ Widget _buildPopupDialog(BuildContext context) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const <Widget>[
         Text(
-          "Introduced in the first Mortal Kombat game as a Chinese Shaolin Kung Fu monk, Liu Kang enters the tenth Mortal Kombat tournament in order to protect Earthrealm from being destroyed. He defeats Grand Champion Goro and the tournament host, the nefarious sorcerer Shang Tsung, and emerges as the new Mortal Kombat champion. He is now on a new mission to test his might and defeat the three legend warrior",
+          " James Bond's 007 status is legendary, but few know the origin of how he gained his 00 designation or how its meaning has changed over time. Bond has become synonymous with 007- those three numbers that denote his famous license to kill.",
           style: TextStyle(
             color: Colors.white,
             fontSize: 16,
